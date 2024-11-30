@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    {% if current_user.is_authenticated %}
+        <h1>Добро пожаловать, {{ current_user.name }}!</h1>
+        <p>Это главная страница лабораторной работы 5.</p>
+        <p>В этой лабораторной работе мы реализовали механизмы авторизации и регистрации с использованием микрофреймворка Flask</p>
+        <form action="{{ url_for('logout') }}" method="get">
+            <button type="submit">Выйти</button>
+        </form>
+    {% else %}
+        <h1>Вы не авторизованы</h1>
+        <p>Пожалуйста, <a href="{{ url_for('login') }}">войдите</a> или <a href="{{ url_for('signup') }}">зарегистрируйтесь</a>.</p>
+    {% endif %}
+</body>
+</html>
